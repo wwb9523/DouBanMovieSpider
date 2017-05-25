@@ -58,12 +58,12 @@ class DBUnit(object):
             logger.error('error sql:"%s"' % sql)
         return res
 
-    def insertMovie(self,douId,title,aka,year,length,summary,rating_num,rating_people,stars5,stars4,stars3,stars2,stars1,image):
+    def insertMovie(self,douId,title,aka,year,length,summary,rating_num,rating_people,stars5,stars4,stars3,stars2,stars1,image,img_url):
         sql = 'insert into movie(douId,title,aka,year,length,summary,rating_num,' \
-              'rating_people,stars5,stars4,stars3,stars2,stars1,image)' \
-            'VALUES(%s,"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")'\
+              'rating_people,stars5,stars4,stars3,stars2,stars1,image,img_url)' \
+            'VALUES(%s,"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")'\
             %(douId,MySQLdb.escape_string(title),MySQLdb.escape_string(aka),year,length,MySQLdb.escape_string(summary),rating_num,rating_people,
-              stars5,stars4,stars3,stars2,stars1,image)
+              stars5,stars4,stars3,stars2,stars1,image,img_url)
         res=self.cursor.execute(sql)
         if not res:
             logger.error('error sql:"%s"' % sql)

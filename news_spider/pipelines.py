@@ -35,9 +35,10 @@ class NewsPipeline(object):
         if movId and item['douId']:
             return
     #    self.writeJson(item)
+        img=''
         if item['image']:
             img=self.downloadFile(item['image'])
-        res = self.DB.insertMovie(int(item['douId']),item['title'],item['aka'],item['year'],item['length'],item['summary'],item['rating_num'],item['rating_people'],item['stars5'],item['stars4'],item['stars3'],item['stars2'],item['stars1'],img)
+        res = self.DB.insertMovie(int(item['douId']),item['title'],item['aka'],item['year'],item['length'],item['summary'],item['rating_num'],item['rating_people'],item['stars5'],item['stars4'],item['stars3'],item['stars2'],item['stars1'],img,item['image'])
         self.DB.db.commit()
         if res:
             movId=self.DB.getMovIdBydouId(item['douId'])
